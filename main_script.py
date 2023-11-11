@@ -31,3 +31,6 @@ if __name__ == '__main__':
 
     if selected_page == 'Home':
         home_page()
+    elif selected_page == 'Project Dashboard':
+        task_page()
+
