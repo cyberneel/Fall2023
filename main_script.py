@@ -14,8 +14,8 @@ API_EXT = '/api/v1/'
 API_URL = ""
 ACCESS_TOKEN = "" 
 
-yesterday = (datetime.datetime.today() + datetime.timedelta(days=-1)).strftime('%Y-%m-%d')
-today = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
+today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
 
 st.set_page_config(
     page_title="OnTime",
