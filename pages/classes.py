@@ -42,7 +42,8 @@ def classes_page():
             #calEvents = requests.get("https://"+API_URL+API_EXT+"calendar_events?type=assignment&access_token="+ACCESS_TOKEN+"&context_codes%5B%5D=course_" + str(elem["id"]))
             #calEvents = requests.get("https://"+API_URL+API_EXT+"calendar_events?type=assignment" + "&context_codes%5B%5D=course_" + str(elem["id"]), {"Authorization": f"bearer {ACCESS_TOKEN}"})
             #st.write(calEvents.json())
-            st.write("Assignments Due TODAY:" + today)
-            assignments = requests.get("https://"+API_URL+API_EXT+"calendar_events?access_token=" + ACCESS_TOKEN + "&type=assignment&context_codes%5B%5D=user_" + str(userJson["id"]) + "&context_codes%5B%5D=course_" + str(elem["id"]) + "&start_date=" + yesterday + "&end_date=" + today + "&per_page=50").json()
-            for ass in assignments:
-                st.write(ass["title"])
+            #st.write("Assignments Due TODAY:" + today)
+            #assignments = requests.get("https://"+API_URL+API_EXT+"calendar_events?access_token=" + ACCESS_TOKEN + "&type=assignment&context_codes%5B%5D=user_" + str(userJson["id"]) + "&context_codes%5B%5D=course_" + str(elem["id"]) + "&start_date=" + yesterday + "&end_date=" + today + "&per_page=50").json()
+            #for ass in assignments:
+            #    st.write(ass["title"])
+classes_page()
