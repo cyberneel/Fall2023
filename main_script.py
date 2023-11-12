@@ -40,6 +40,9 @@ today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelt
 def home_page():
     st.title('Welcome to OnTime!')
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
+    if not response.ok:
+        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.stop()
     #st.write(response.json()[0]["name"])
     for elem in response.json():
         st.write(elem["name"])
@@ -51,6 +54,9 @@ def classes_page():
     st.title("Your Classes:")
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
     #st.write(response.json()[0]["name"])
+    if not response.ok:
+        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.stop()
     for elem in response.json():
         with st.expander(elem["name"]):
             if("original_name" in elem):

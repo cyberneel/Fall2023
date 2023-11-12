@@ -25,6 +25,9 @@ userJson = requests.get("https://" + API_URL + "/api/v1/users/self?access_token=
 st.title("Your Classes:")
 response = requests.get("https://" + API_URL + API_EXT + "courses?access_token=" + ACCESS_TOKEN)
 #st.write(response.json()[0]["name"])
+if not response.ok:
+        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.stop()
 for elem in response.json():
     with st.expander(elem["name"]):
         if("original_name" in elem):
