@@ -47,9 +47,7 @@ def home_page():
     #st.write(response.json()[0]["name"])
     for elem in response.json():
         st.write(elem["name"])
-def task_page():
-    st.title("Project Dashboard")
-    st.divider() 
+
 if __name__ == '__main__':
 
     with st.sidebar:
