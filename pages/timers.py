@@ -7,14 +7,6 @@ import time
 
 #def countdown():
 
-def update_time():
-    timer = datetime.datetime.now()
-    st.write(timer.strftime("%M"), ':', timer.strftime("%S"))
-
-
-
-
-
 
 st.title("Timer/Stopwatch")
 
@@ -22,10 +14,24 @@ result = st.selectbox('Please select a timer:', ('Stopwatch', 'Timer'))
 
 st.write('Selected: ', result)
 
+placeholder = st.empty()
+
+def update_time():
+    timer = datetime.datetime.now() 
+    with placeholder.container():
+        st.write(timer.strftime("%M"), ':', timer.strftime("%S"))
+
 while(True):
     update_time()
-    st.write("\u0008\u0008\u0008\u0008\u0008")
-    time.sleep(2)
+    time.sleep(1)
+    placeholder.empty()
+
+
+def update_time():
+    timer = datetime.datetime.now() 
+    with placeholder.container():
+        st.write(timer.strftime("%M"), ':', timer.strftime("%S"))
+
 
 #if(result == "Stopwatch"):
     
