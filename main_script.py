@@ -19,12 +19,22 @@ today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelt
 
 st.set_page_config(
     page_title="OnTime",
+    page_icon="ontime.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
+
 def home_page():
-    st.title('Welcome to OnTime!')
+    col1, mid, col2 = st.columns([1,1.62,20])
+    with col1:
+        st.image('img/ontime.png', width=108)
+    with col2:
+        st.title('Welcome to OnTime!')
+
+#def logo():
+    #image = Image.open("ontime.png")
+    #st.image(image,width=50)
 
 def classes_page():
     userJson = requests.get("https://unt.instructure.com/api/v1/users/self?access_token="+ACCESS_TOKEN).json()
@@ -66,5 +76,6 @@ if __name__ == '__main__':
 
     if selected_page == 'Home':
         home_page()
+        #logo()
     elif selected_page == 'Classes':
         classes_page()
