@@ -22,7 +22,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
+def settings_page():
+    st.session_state["API_URL"] = st.text_input('Please enter your organization\'s Canvas Instructure URL: ', st.session_state["API_URL"])
+    st.session_state["ACCESS_TOKEN"] = st.text_input('Please enter your Access Token: ', st.session_state["ACCESS_TOKEN"])
 def home_page():
     st.title('Welcome to OnTime!')
     response = requests.get(API_URL+"courses?access_token="+API_KEY)
@@ -32,7 +34,6 @@ def home_page():
 def task_page():
     st.title("Project Dashboard")
     st.divider() 
-    st.write("""Kill yourself""")
 def classes_page():
     userJson = requests.get("https://unt.instructure.com/api/v1/users/self?access_token="+ACCESS_TOKEN).json()
     st.title("Your Classes:")
@@ -59,7 +60,7 @@ if __name__ == '__main__':
 
     with st.sidebar:
         selected = option_menu(None, ["Home","Calendar", "Settings", "Classes", "Tasks"],
-        icons = ['house',  'calendar', 'gear', "book", "pencil"], default_index = 1,
+        icons = ['house',  'calendar', 'gear', "book", "pencil"], default_index = 0,
         styles={"container": {"padding": "0!important", "background-color": "#120101"},
         "icon": {"color": "orange", "font-size": "25px"},
         "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#a6874b"},
@@ -87,6 +88,6 @@ if __name__ == '__main__':
     elif selected == 'Calendar':
         task_page()
     elif selected == 'Settings':
-        task_page()
+        settings_page()
     elif selected == 'Classes':
         classes_page()
