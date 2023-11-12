@@ -8,5 +8,3 @@ def settings_page():
     if st.button('SAVE'):
         st.session_state["API_URL"]  = API_URL
         st.session_state["ACCESS_TOKEN"] = ACCESS_TOKEN
-
-settings_page()
