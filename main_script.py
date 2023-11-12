@@ -15,7 +15,7 @@ API_KEYM = "9082~PoqZCFiKGh0YegeAT4EBxzgUbdwuQcn8SIE1EAOTC07btruXEpbWQCNAmY8pdaz
 
 st.set_page_config(
     page_title="OnTime",
-    page_icon="img/ontime.png",
+    page_icon="img/ontimefav.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
