@@ -6,6 +6,8 @@ import altair as alt
 import requests
 from streamlit_option_menu import option_menu
 import datetime
+from streamlit_extras.switch_page_button import switch_page
+
 
 API_URL = "https://unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
