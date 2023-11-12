@@ -98,7 +98,7 @@ if __name__ == '__main__':
         ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
 
     if API_URL == "" or ACCESS_TOKEN == "":
-        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.error("GO TO SETTINGS AND ENTER INFO!")
         st.stop()
 
     #selected_page = st.sidebar.selectbox(
