@@ -73,14 +73,7 @@ if __name__ == '__main__':
      #   'Select Page',
     #    ('Home', 'Calendar', 'Settings')
     #)
-    if "API_URL" not in st.session_state:
-        st.session_state["API_URL"] = ""
-
-    if "ACCESS_TOKEN" not in st.session_state:
-        st.session_state["ACCESS_TOKEN"] = ""
-
-    API_URL = st.session_state["API_URL"]
-    ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
+    
 
     if selected == 'Home':
         home_page()
