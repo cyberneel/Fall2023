@@ -6,19 +6,24 @@ import altair as alt
 from streamlit_calendar import calendar
 import requests
 from streamlit_option_menu import option_menu
+import datetime
 
 API_URL = "https://unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
 API_KEYM = "9082~PoqZCFiKGh0YegeAT4EBxzgUbdwuQcn8SIE1EAOTC07btruXEpbWQCNAmY8pdaz0"
 
 
-ACCESS_TOKEN = "" 
+ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
+API_URL = st.session_state["API_URL"]
+
+yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
+today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
 
 API_EXT = "/api/v1/"
 
-userJson = requests.get("https://unt.instructure.com/api/v1/users/self?access_token="+ACCESS_TOKEN).json()
+userJson = requests.get("https://" + API_URL + "/api/v1/users/self?access_token=" + ACCESS_TOKEN).json()
 st.title("Your Classes:")
-response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
+response = requests.get("https://" + API_URL + API_EXT + "courses?access_token=" + ACCESS_TOKEN)
 #st.write(response.json()[0]["name"])
 for elem in response.json():
     with st.expander(elem["name"]):
