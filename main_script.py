@@ -46,19 +46,10 @@ if __name__ == '__main__':
         initial_sidebar_state="expanded"
     )
 
-    with st.sidebar:
-        selected = option_menu(None, ["Home","Calendar", "Settings", "Classes", "Tasks"],
-        icons = ['house',  'calendar', 'gear', "book", "pencil"], default_index = 0,
-        styles={"container": {"padding": "0!important", "background-color": "#120101"},
-        "icon": {"color": "orange", "font-size": "25px"},
-        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#a6874b"},
-        "nav-link-selected": {"background-color": "green"},
-                }
-                               )
-        selected
     
     if "API_URL" not in st.session_state:
         API_URL = ""
+
     else:
         API_URL = st.session_state["API_URL"]
     if "ACCESS_TOKEN" not in st.session_state:
@@ -75,7 +66,7 @@ if __name__ == '__main__':
     #    ('Home', 'Calendar', 'Settings')
     #)
     
-
+    selected = "Home"
     if selected == 'Home':
         home_page()
     elif selected == 'Tasks':
