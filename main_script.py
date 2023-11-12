@@ -11,6 +11,7 @@ from pages.classes import classes_page
 from pages.tasks import task_page
 import json
 import random
+from streamlit_extras.switch_page_button import switch_page
 
 API_URL = "unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
@@ -27,6 +28,8 @@ def home_page():
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
     if not response.ok:
         st.error("GO TO SETTINGS AND ENTER INFO!")
+        if st.button("Go to SETTINGS"):
+            switch_page("settings")
         st.stop()
     #st.write(response.json()[0]["name"])
     #for elem in response.json():
@@ -106,6 +109,8 @@ if __name__ == '__main__':
 
     if API_URL == "" or ACCESS_TOKEN == "":
         st.error("GO TO SETTINGS AND ENTER INFO!")
+        if st.button("Go to SETTINGS"):
+            switch_page("settings")
         st.stop()
 
     #selected_page = st.sidebar.selectbox(

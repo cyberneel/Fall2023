@@ -32,6 +32,8 @@ def classes_page():
 
     if API_URL == "" or ACCESS_TOKEN == "":
         st.error("GO TO SETTINGS AND ENTER INFO!")
+        if st.button("Go to SETTINGS"):
+            switch_page("settings")
         st.stop()
 
     userJson = requests.get("https://"+API_URL+API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
