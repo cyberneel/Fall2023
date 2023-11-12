@@ -19,19 +19,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-if "API_URL" not in st.session_state:
-    API_URL = ""
-else:
-    API_URL = st.session_state["API_URL"]
-if "ACCESS_TOKEN" not in st.session_state:
-    ACCESS_TOKEN = ""
-else:
-    ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
-
-if API_URL == "" or ACCESS_TOKEN == "":
-    st.write("GO TO SETTINGS AND ENTER INFO!")
-    st.stop()
-
 API_EXT = '/api/v1/'
 
 yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
@@ -60,6 +47,20 @@ if __name__ == '__main__':
                 }
                                )
         selected
+    
+    if "API_URL" not in st.session_state:
+        API_URL = ""
+    else:
+        API_URL = st.session_state["API_URL"]
+    if "ACCESS_TOKEN" not in st.session_state:
+        ACCESS_TOKEN = ""
+    else:
+        ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
+
+    if API_URL == "" or ACCESS_TOKEN == "":
+        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.stop()
+
     #selected_page = st.sidebar.selectbox(
      #   'Select Page',
     #    ('Home', 'Calendar', 'Settings')
