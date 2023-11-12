@@ -6,9 +6,6 @@ from streamlit_calendar import calendar
 import requests
 from streamlit_option_menu import option_menu
 import datetime
-from pages.settings import settings_page
-from pages.classes import classes_page
-from pages.tasks import task_page
 import json
 import random
 from streamlit_extras.switch_page_button import switch_page
@@ -117,15 +114,4 @@ if __name__ == '__main__':
      #   'Select Page',
     #    ('Home', 'Calendar', 'Settings')
     #)
-    
-    selected = "Home"
-    if selected == 'Home':
-        home_page()
-    elif selected == 'Tasks':
-        task_page()
-    elif selected == 'Calendar':
-        task_page()
-    elif selected == 'Settings':
-        settings_page()
-    elif selected == 'Classes':
-        classes_page()
+    home_page()
