@@ -66,4 +66,11 @@ def task_page():
                     st.write(rf"""**{str(cnt)+". "+ass["title"]}**""")
                     cnt = cnt + 1
 
+st.set_page_config(
+        page_title="OnTime",
+        page_icon="img/ontimefav.png",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+
 task_page()

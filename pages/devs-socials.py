@@ -1,5 +1,12 @@
 import streamlit as st
 
+st.set_page_config(
+        page_title="OnTime",
+        page_icon="img/ontimefav.png",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:

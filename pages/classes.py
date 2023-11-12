@@ -82,4 +82,11 @@ def classes_page():
                 #for ass in assignments:
                 #    st.write(ass["title"])
 
+st.set_page_config(
+        page_title="OnTime",
+        page_icon="img/ontimefav.png",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+
 classes_page()

@@ -35,8 +35,8 @@ def home_page():
 
 def calendar_main():
 
-    yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=-11)), datetime.time.min).strftime('%Y-%m-%d')
-    today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=11)), datetime.time.max).strftime('%Y-%m-%d')
+    yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=-45)), datetime.time.min).strftime('%Y-%m-%d')
+    today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=45)), datetime.time.max).strftime('%Y-%m-%d')
     userJson = requests.get("https://" + API_URL + API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
 
     cal = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN).json()
