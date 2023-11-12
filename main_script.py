@@ -15,6 +15,7 @@ API_KEYM = "9082~PoqZCFiKGh0YegeAT4EBxzgUbdwuQcn8SIE1EAOTC07btruXEpbWQCNAmY8pdaz
 
 st.set_page_config(
     page_title="OnTime",
+    page_icon="img/ontime.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -26,7 +27,7 @@ today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelt
 
 
 def home_page():
-    st.title('Welcome to OnTime!')
+    title_logo()
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
     if not response.ok:
         st.write("GO TO SETTINGS AND ENTER INFO!")
@@ -34,6 +35,13 @@ def home_page():
     #st.write(response.json()[0]["name"])
     for elem in response.json():
         st.write(elem["name"])
+
+def title_logo():
+    col1, mid, col2 = st.columns([1,1.62,20])
+    with col1:
+        st.image('img/ontime.png', width=108)
+    with col2:
+        st.title('Welcome to OnTime!')
 
 if __name__ == '__main__':
 
