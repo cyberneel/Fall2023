@@ -6,6 +6,7 @@ from streamlit_calendar import calendar
 import requests
 from streamlit_option_menu import option_menu
 import datetime
+from pages.settings import settings_page
 
 API_URL = "unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
@@ -35,9 +36,7 @@ API_EXT = '/api/v1/'
 yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
 today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
 
-def settings_page():
-    st.session_state["API_URL"] = st.text_input('Please enter your organization\'s Canvas Instructure URL: ', st.session_state["API_URL"])
-    st.session_state["ACCESS_TOKEN"] = st.text_input('Please enter your Access Token: ', st.session_state["ACCESS_TOKEN"])
+
 def home_page():
     st.title('Welcome to OnTime!')
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
