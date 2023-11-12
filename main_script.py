@@ -7,6 +7,7 @@ import requests
 from streamlit_option_menu import option_menu
 import datetime
 from pages.settings import settings_page
+from pages.classes import classes_page
 
 API_URL = "unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
