@@ -21,13 +21,13 @@ today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelt
 
 
 def home_page():
-    title_logo()
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
     if not response.ok:
         st.error("GO TO SETTINGS AND ENTER INFO!")
         if st.button("Go to SETTINGS"):
             switch_page("settings")
         st.stop()
+    title_logo()
     #st.write(response.json()[0]["name"])
     #for elem in response.json():
         #st.write(elem["name"])
