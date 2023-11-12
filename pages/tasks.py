@@ -63,7 +63,8 @@ def task_page():
                 count = len(assignments)
                 cnt = 1
                 for ass in assignments:
-                    st.write(rf"""**{str(cnt)+". "+ass["title"]}**""")
+                    st.write(rf"""**Due: {datetime.datetime.strptime(ass["end_at"], "%Y-%m-%dT%H:%M:%SZ").strftime("%m-%d-%Y")}**""")
+                    st.write(rf"""{str(cnt)+". "+ass["title"]}""")
                     cnt = cnt + 1
 
 st.set_page_config(
