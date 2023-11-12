@@ -17,7 +17,21 @@ today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelt
 
 API_EXT = "/api/v1/"
 
-def classes_page(API_URL, ACCESS_TOKEN):
+def classes_page():
+
+    if "API_URL" not in st.session_state:
+        API_URL = ""
+    else:
+        API_URL = st.session_state["API_URL"]
+    if "ACCESS_TOKEN" not in st.session_state:
+        ACCESS_TOKEN = ""
+    else:
+        ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
+
+    if API_URL == "" or ACCESS_TOKEN == "":
+        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.stop()
+
     userJson = requests.get("https://"+API_URL+API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
     st.title("Your Classes:")
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
@@ -42,3 +56,5 @@ def classes_page(API_URL, ACCESS_TOKEN):
             #assignments = requests.get("https://"+API_URL+API_EXT+"calendar_events?access_token=" + ACCESS_TOKEN + "&type=assignment&context_codes%5B%5D=user_" + str(userJson["id"]) + "&context_codes%5B%5D=course_" + str(elem["id"]) + "&start_date=" + yesterday + "&end_date=" + today + "&per_page=50").json()
             #for ass in assignments:
             #    st.write(ass["title"])
+
+classes_page()

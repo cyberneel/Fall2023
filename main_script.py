@@ -49,7 +49,6 @@ if __name__ == '__main__':
     
     if "API_URL" not in st.session_state:
         API_URL = ""
-
     else:
         API_URL = st.session_state["API_URL"]
     if "ACCESS_TOKEN" not in st.session_state:
