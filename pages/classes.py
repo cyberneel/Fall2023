@@ -39,7 +39,7 @@ def classes_page():
 
     userJson = requests.get("https://"+API_URL+API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
     st.title("Your Classes:")
-    dat = {'include[]': 'course_image'}
+    dat = {'include[]': 'total_students'}
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN, data=dat)
     #st.write(response.json()[0]["name"])
     if not response.ok:
@@ -50,6 +50,7 @@ def classes_page():
     cols = [col1, col2, col3]
     counting = 0
     for elem in response.json():
+        #st.write(elem)
         if False:
             img = elem["image_download_url"]
             st.write(img)
@@ -67,6 +68,8 @@ def classes_page():
                     st.write("Original Name: " + elem["name"])
 
                 st.write("Course Code: " + elem["course_code"])
+                if 'total_students' in elem:
+                    st.write("Total Students Enrolled: " + str(elem["total_students"]))
                 counting = counting + 1
                 counting = counting % 3
                 #st.image(img)
