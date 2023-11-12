@@ -40,7 +40,7 @@ def classes_page():
     response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN, data=dat)
     #st.write(response.json()[0]["name"])
     if not response.ok:
-        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.error("GO TO SETTINGS AND ENTER INFO!")
         st.stop()
     #st.write(response.json())
     col1, col2, col3 = st.columns(3)

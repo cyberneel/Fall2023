@@ -27,7 +27,7 @@ def task_page():
         ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
 
     if API_URL == "" or ACCESS_TOKEN == "":
-        st.write("GO TO SETTINGS AND ENTER INFO!")
+        st.error("GO TO SETTINGS AND ENTER INFO!")
         st.stop()
 
     userJson = requests.get("https://" + API_URL + API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
