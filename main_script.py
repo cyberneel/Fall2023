@@ -77,13 +77,14 @@ def calendar_main():
     #st.write(calendars)
 
 def title_logo():
+    userJson = requests.get("https://" + API_URL + API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
     col1, mid, col2 = st.columns([1,1.62,20])
     with col1:
         st.image('img/ontime.png', width=108)
     with mid:
         st.write("    ")
     with col2:
-        st.title('Welcome to OnTime!')
+        st.title('Welcome to OnTime, ' + userJson["name"] + "!")
 
 if __name__ == '__main__':
 
