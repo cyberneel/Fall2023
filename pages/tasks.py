@@ -24,6 +24,7 @@ yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.time
 today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
 
 def task_page():
+    userJson = requests.get("https://" + API_URL + API_EXT + "users/self?access_token="+ACCESS_TOKEN).json()
     st.title("Task Dashboard")
     st.divider() 
     selected2 = option_menu(None, ["Due today", "Next 7 days", "Next 30 Days"],
@@ -32,9 +33,11 @@ def task_page():
         "nav-link": {"--hover-color": "#75340e"}
     })
     
-    selected2   
+    #selected2   
     st.write("Assignments Due TODAY:" + today)
-    assignments = requests.get("https://"+API_URL+API_EXT+"calendar_events?access_token=" + ACCESS_TOKEN + "&type=assignment&context_codes%5B%5D=user_" + str(userJson["id"]) + "&context_codes%5B%5D=course_" + str(elem["id"]) + "&start_date=" + yesterday + "&end_date=" + today + "&per_page=50").json()
-    for ass in assignments:
-        st.write(ass["title"])
+    response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
+    for elem in response.json():
+        assignments = requests.get("https://"+API_URL+API_EXT+"calendar_events?access_token=" + ACCESS_TOKEN + "&type=assignment&context_codes%5B%5D=user_" + str(userJson["id"]) + "&context_codes%5B%5D=course_" + str(elem["id"]) + "&start_date=" + yesterday + "&end_date=" + today + "&per_page=50").json()
+        for ass in assignments:
+            st.write(ass["title"])
 task_page()

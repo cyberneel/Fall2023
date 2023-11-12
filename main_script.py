@@ -9,16 +9,10 @@ import datetime
 from pages.settings import settings_page
 from pages.classes import classes_page
 from pages.tasks import task_page
+
 API_URL = "unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
 API_KEYM = "9082~PoqZCFiKGh0YegeAT4EBxzgUbdwuQcn8SIE1EAOTC07btruXEpbWQCNAmY8pdaz0"
-
-st.set_page_config(
-    page_title="OnTime",
-    page_icon="img/ontimefav.png",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
 
 API_EXT = '/api/v1/'
 
@@ -44,6 +38,13 @@ def title_logo():
         st.title('Welcome to OnTime!')
 
 if __name__ == '__main__':
+
+    st.set_page_config(
+        page_title="OnTime",
+        page_icon="img/ontimefav.png",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 
     with st.sidebar:
         selected = option_menu(None, ["Home","Calendar", "Settings", "Classes", "Tasks"],
