@@ -7,29 +7,40 @@ import requests
 from streamlit_option_menu import option_menu
 import datetime
 
-API_URL = "https://unt.instructure.com/api/v1/"
+API_URL = "unt.instructure.com"
 API_KEY = "9082~1MuaTSggWfo8LFKsjyVFYGdbBV8KvK4RbfTGoiBtU8oEdVpNoPD2ipX2Fp3i4fKf"
 API_KEYM = "9082~PoqZCFiKGh0YegeAT4EBxzgUbdwuQcn8SIE1EAOTC07btruXEpbWQCNAmY8pdaz0"
-
-ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
-API_URL = st.session_state["API_URL"]
-
-API_EXT = '/api/v1/'
-
-yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
-today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
 
 st.set_page_config(
     page_title="OnTime",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+if "API_URL" not in st.session_state:
+    API_URL = ""
+else:
+    API_URL = st.session_state["API_URL"]
+if "ACCESS_TOKEN" not in st.session_state:
+    ACCESS_TOKEN = ""
+else:
+    ACCESS_TOKEN = st.session_state["ACCESS_TOKEN"]
+
+if API_URL == "" or ACCESS_TOKEN == "":
+    st.write("GO TO SETTINGS AND ENTER INFO!")
+    st.stop()
+
+API_EXT = '/api/v1/'
+
+yesterday = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.min).strftime('%Y-%m-%d')
+today = datetime.datetime.combine((datetime.datetime.today() + datetime.timedelta(days=0)), datetime.time.max).strftime('%Y-%m-%d')
+
 def settings_page():
     st.session_state["API_URL"] = st.text_input('Please enter your organization\'s Canvas Instructure URL: ', st.session_state["API_URL"])
     st.session_state["ACCESS_TOKEN"] = st.text_input('Please enter your Access Token: ', st.session_state["ACCESS_TOKEN"])
 def home_page():
     st.title('Welcome to OnTime!')
-    response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+API_KEY)
+    response = requests.get("https://"+API_URL+API_EXT+"courses?access_token="+ACCESS_TOKEN)
     #st.write(response.json()[0]["name"])
     for elem in response.json():
         st.write(elem["name"])
